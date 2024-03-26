@@ -6,12 +6,18 @@ Endpoint: POST /api/patients
 Headers:
 - Authorization: token
 
+Notes:
+- date format for `dob` field is **dd-MM-yyyy**
+- value for `sex` are **M** for Male or **F** for Female
+
 Request Body:
 ```json
 {
-  "patient_nik": "727273833929",
-  "patient_name": "Muh. Abdi",
-  "patient_address": "Jl. Percontohan Jatirangga, Jatisampurna, Bekasi"
+  "nik": "727273833929",
+  "name": "Muh. Abdi",
+  "address": "Jl. Percontohan Jatirangga, Jatisampurna, Bekasi",
+  "dob": "25-04-1993",
+  "sex": "M"
 }
 ```
 
@@ -21,9 +27,11 @@ Response Body:
 {
   "data": {
     "id": 1,
-    "patient_nik": "727273833929",
-    "patient_name": "Muh. Abdi",
-    "patient_address": "Jl. Percontohan Jatirangga, Jatisampurna, Bekasi"
+    "nik": "727273833929",
+    "name": "Muh. Abdi",
+    "address": "Jl. Percontohan Jatirangga, Jatisampurna, Bekasi",
+    "dob": "25-04-1993",
+    "sex": "M"
   }
 }
 ```
@@ -48,9 +56,11 @@ Response Body:
 {
   "data": {
     "id": 1,
-    "patient_nik": "727273833929",
-    "patient_name": "Muh. Abdi",
-    "patient_address": "Jl. Percontohan Jatirangga, Jatisampurna, Bekasi",
+    "nik": "727273833929",
+    "name": "Muh. Abdi",
+    "address": "Jl. Percontohan Jatirangga, Jatisampurna, Bekasi",
+    "dob": "25-04-1993",
+    "sex": "M",
     "created_at": "2019-02-03 12:13:14.000000"
   }
 }
@@ -65,8 +75,10 @@ Headers:
 Request Body:
 ```json
 {
-  "patient_name": "Muh. Abdi",
-  "patient_address": "Jl. Percontohan Jatirangga, Jatisampurna, Bekasi"
+  "name": "Muh. Abdi",
+  "address": "Jl. Percontohan Jatirangga, Jatisampurna, Bekasi",
+  "dob": "25-04-1993",
+  "sex": "M"
 }
 ```
 
@@ -76,9 +88,11 @@ Response Body:
 {
   "data": {
     "id": 1,
-    "patient_nik": "727273833929",
-    "patient_name": "Muh. Abdi",
-    "patient_address": "Jl. Percontohan Jatirangga, Jatisampurna, Bekasi",
+    "nik": "727273833929",
+    "name": "Muh. Abdi",
+    "address": "Jl. Percontohan Jatirangga, Jatisampurna, Bekasi",
+    "dob": "25-04-1993",
+    "sex": "M",
     "created_at": "2019-02-03 12:13:14.000000"
   }
 }
@@ -115,16 +129,20 @@ Response Body:
   "data": [
     {
       "id": 1,
-      "patient_nik": "727273833929",
-      "patient_name": "Muh. Abdi",
-      "patient_address": "Jl. Percontohan Jatirangga, Jatisampurna, Bekasi",
+      "nik": "727273833929",
+      "name": "Muh. Abdi",
+      "address": "Jl. Percontohan Jatirangga, Jatisampurna, Bekasi",
+      "dob": "25-04-1993",
+      "sex": "M",
       "created_at": "2019-02-03 12:13:14.000000"
     },
     {
       "id": 2,
-      "patient_nik": "727273833929",
-      "patient_name": "Muh. Abdi",
-      "patient_address": "Jl. Percontohan Jatirangga, Jatisampurna, Bekasi",
+      "nik": "727273833929",
+      "name": "Muh. Abdi",
+      "address": "Jl. Percontohan Jatirangga, Jatisampurna, Bekasi",
+      "dob": "25-04-1993",
+      "sex": "M",
       "created_at": "2019-02-03 12:13:14.000000"
     }
   ],
