@@ -1,0 +1,82 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  PRACTITIONER
+  STAFF
+}
+
+enum Sex {
+  MALE
+  FEMALE
+}
+
+enum EncounterStatus {
+  INPROGRESS
+  FINISHED
+}
+
+model User {
+  email String @id @db.VarChar(100)
+  password String @db.VarChar(100)
+  name String @db.VarChar(100)
+  role Role
+  token String? @db.VarChar(100)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Practitioner {
+  nik String @id @db.VarChar(20)
+  name String @db.VarChar(100)
+  email String @db.VarChar(100)
+  phone String? @db.VarChar(20)
+  address String? @db.VarChar(255)
+  postal_code String? @db.VarChar(10)
+  str_number String @db.VarChar(100)
+  ihs_number String? @db.VarChar(100)
+  specialty String @db.VarChar(100)
+
+  encounters Encounter[]
+
+  @@map("practitioners")
+}
+
+model Patient {
+  nik String @id @db.VarChar(20)
+  name String @db.VarChar(100)
+  dob String @db.VarChar(20)
+  sex Sex
+
+  encounters Encounter[]
+
+  @@map("patients")
+}
+
+model Encounter {
+  id Int @id @default(autoincrement())
+  patient_nik String @db.VarChar(20)
+  practitioner_nik String @db.VarChar(20)
+  status EncounterStatus
+  queue_number Int
+
+  patient Patient @relation(fields: [patient_nik], references: [nik])
+  practitioner Practitioner @relation(fields: [practitioner_nik], references: [nik])
+
+  @@map("encounters")
+}
